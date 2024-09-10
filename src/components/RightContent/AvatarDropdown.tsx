@@ -8,9 +8,9 @@ import { stringify } from 'querystring';
 import React from 'react';
 import { flushSync } from 'react-dom';
 import HeaderDropdown from '../HeaderDropdown';
+import {removeToken} from "@/utils/auth";
 
 export type GlobalHeaderRightProps = {
-  menu?: boolean;
   children?: React.ReactNode;
 };
 
@@ -65,10 +65,11 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu, childre
   const onMenuClick: MenuProps['onClick'] = (event) => {
     const { key } = event;
     if (key === 'logout') {
-      flushSync(() => {
-        setInitialState((s) => ({ ...s, currentUser: undefined }));
-      });
-      loginOut();
+      removeToken();
+      history.push('/user/login');
+      // flushSync(() => {
+      //   setInitialState((s) => ({ ...s, currentUser: undefined }));
+      // });
       return;
     }
     history.push(`/account/${key}`);
@@ -97,23 +98,21 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu, childre
   }
 
   const menuItems = [
-    ...(menu
-      ? [
-          {
-            key: 'center',
-            icon: <UserOutlined />,
-            label: '个人中心',
-          },
-          {
-            key: 'settings',
-            icon: <SettingOutlined />,
-            label: '个人设置',
-          },
-          {
-            type: 'divider' as const,
-          },
-        ]
-      : []),
+    ...([
+      {
+        key: 'center',
+        icon: <UserOutlined />,
+        label: '个人中心',
+      },
+      // {
+      //   key: 'settings',
+      //   icon: <SettingOutlined />,
+      //   label: '个人设置',
+      // },
+      {
+        type: 'divider' as const,
+      },
+    ]),
     {
       key: 'logout',
       icon: <LogoutOutlined />,

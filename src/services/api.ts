@@ -1864,6 +1864,15 @@ export async function userUpdate(params) {
   });
 }
 
+// WithdrawAdd 提现添加
+export async function WithdrawAdd(body: API.LoginParams, options?: { [key: string]: any }) {
+  return request<API.LoginResult>('/api/proxy/withdraw-add', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  });
+}
+
 // PorxyAdd
 export async function PorxyAdd(params) {
   return request<API.LoginResult>('/api/proxy/user-add', {

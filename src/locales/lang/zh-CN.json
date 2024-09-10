@@ -13,7 +13,7 @@
   "pages.login.password.placeholder1": "请输入密码",
   "pages.login.password.required1": "密码是必填项！",
   "ID": "编号",
-  "Phone": "Phone",
+  "Phone": "手机",
   "SuperiorAccount": "上级账号",
   "Remark": "备注",
   "Balance": "余额",
@@ -24,6 +24,12 @@
   "Operation": "操作",
   "Edit": "编辑",
   "LotteryName": "彩票名称",
+  "MyRebate": "我的返水",
+  "copyInvitationCode": "复制邀请码",
+  "InvitationCode": "邀请码",
+  "TodayIncome": "今日收入",
+  "MobileOperator": "手机运营商",
+  "CurrentBalance": "当前余额",
   "Period": "期号",
   "Multiple": "倍数",
   "Details": "详情",
@@ -36,6 +42,7 @@
   "WaitingForRedemption": "等待兑奖",
   "Withdrawal": "取消",
   "CreatedAt": "订单时间",
+  "WithdrawalAmount": "提现金额",
   "单": "单",
   "双": "双",
   "Settled": "已结算",
@@ -278,5 +285,6 @@
   "app.pwa.serviceworker.updated.ok": "刷新",
   "component.tagSelect.expand": "展开",
   "component.tagSelect.collapse": "收起",
-  "component.tagSelect.all": "全部"
+  "component.tagSelect.all": "全部",
+  "pages.account.center.copy.success": "复制成功"
 }
