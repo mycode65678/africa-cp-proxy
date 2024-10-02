@@ -1,5 +1,5 @@
 import { ClusterOutlined, ContactsOutlined, HomeOutlined, PlusOutlined } from '@ant-design/icons';
-import {GridContent, ProFormRadio} from '@ant-design/pro-components';
+import {GridContent, ProFormDependency, ProFormRadio} from '@ant-design/pro-components';
 import { useRequest,useIntl } from '@umijs/max';
 import {Avatar, Button, Card, Col, Divider, Input, InputRef, message, Row, Tag} from 'antd';
 import React, { useRef, useState,useEffect } from 'react';
@@ -52,7 +52,7 @@ const Center: React.FC = () => {
               </div>
               {intl.formatMessage({id:"InvitationCode"})}：{data?.InvitationCode} <Button type="primary" onClick={handleCopy}>{intl.formatMessage({id:"copyInvitationCode"})}</Button>
               <Divider dashed />
-              {intl.formatMessage({id:"TodayIncome"})}：<Tag color={"green"}>0.00</Tag> &nbsp; {intl.formatMessage({id:"CurrentBalance"})}：<Tag color={"blue"}>{data?.UserAccount?.Balance}</Tag>
+              {intl.formatMessage({id:"CurrentBalance"})}：<Tag color={"blue"}>{data?.UserAccount?.Balance}</Tag>
               <Divider dashed />
             {/*  表单提现*/}
               <ProForm
@@ -69,34 +69,72 @@ const Center: React.FC = () => {
               {/*  手机运营商 */}
                 <ProFormRadio.Group
                   name="WithdrawType"
-                  label={intl.formatMessage({id:"MobileOperator"})}
+                  label={intl.formatMessage({id:"WithdrawalMethod"})}
                   options={[
                     {
-                      label: 'TNM_Mpamba_old',
-                      value: 'TNM_Mpamba_old',
+                      label: 'airtel malawi',
+                      value: 'airtel malawi',
+                    },
+                    {
+                      label: 'bank transfer',
+                      value: 'bank transfer',
                     }
                   ]}
                 />
-                {/*输入手机号*/}
-                <ProFormDigit
-                  label={intl.formatMessage({id:"Phone"})}
-                  name="Phone"
-                  width="md"
-                  min={1}
-                  max={100}
-                  fieldProps={{
-                    prefix: <ContactsOutlined />,
+                <ProFormDependency name={['WithdrawType']}>
+                  {({ WithdrawType }) => {
+                    if (WithdrawType === 'airtel malawi') {
+                      return (
+                        <ProFormDigit
+                          label={intl.formatMessage({id:"Phone"})}
+                          name="Phone"
+                          width="md"
+                          min={1}
+                          max={100}
+                        />
+                      );
+                    }
+                    if (WithdrawType === 'bank transfer') {
+                      return (
+                        <>
+                        {/*  银行户名 */}
+                        <ProFormDigit
+                          label={intl.formatMessage({id:"BankName"})}
+                          name="BankName"
+                          width="md"
+                          min={1}
+                          max={100}
+                        />
+                        {/*  银行户名 */}
+                        <ProFormDigit
+                          label={intl.formatMessage({id:"BankAccount"})}
+                          name="BankAccount"
+                          width="md"
+                          min={1}
+                          max={100}
+                        />
+                        {/*  卡号 */}
+                        <ProFormDigit
+                          label={intl.formatMessage({id:"CardNumber"})}
+                          name="CardNumber"
+                          width="md"
+                          min={1}
+                          max={100}
+                        />
+                        </>
+                      );
+                    }
+                    return null;
                   }}
-                />
+                </ProFormDependency>
+
+
                 <ProFormDigit
                   label={intl.formatMessage({id:"WithdrawalAmount"})}
                   name="Price"
                   width="md"
                   min={1}
                   max={100}
-                  fieldProps={{
-                    prefix: <ClusterOutlined />,
-                  }}
                 />
               </ProForm>
             </div>

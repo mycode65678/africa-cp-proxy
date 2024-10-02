@@ -190,7 +190,7 @@ const TableList: React.FC = () => {
               setVisible(true);
             }}
           >
-            <PlusOutlined /> 新增
+            <PlusOutlined /> {intl.formatMessage({id: 'add',})}
           </Button>,
         ]}
         request={getList}
@@ -245,7 +245,7 @@ const TableList: React.FC = () => {
       </ModalForm>
 
       <ModalForm
-        title={'新增代理'}
+        title={intl.formatMessage({id: 'add',})}
         width={400}
         // layout={'horizontal'}
         modalProps={{
@@ -282,24 +282,24 @@ const TableList: React.FC = () => {
           initialValue={1}
         />
         <ProFormText
-          label={'登录手机号'}
+          label={intl.formatMessage({id: 'login.phone',})}
           width="md"
           name="Phone"
         />
         {/*  登陆密码*/}
         <ProFormText.Password
-          label={'登陆密码'}
+          label={intl.formatMessage({id: 'login.password',})}
           width="md"
           name="Password"
         />
         <ProFormText.Password
-          label={'确认密码'}
+          label={intl.formatMessage({id: 'PasswordConfirm',})}
           width="md"
           name="PasswordConfirm"
         />
         {/* 返点 */}
         <ProFormDigit
-          label={'返点'}
+          label={intl.formatMessage({id: 'Rebate',})}
           width="md"
           initialValue={2}
           min={0}
@@ -309,7 +309,7 @@ const TableList: React.FC = () => {
 
         {/*  会员备注*/}
         <ProFormTextArea
-          label={'会员备注'}
+          label={intl.formatMessage({id: 'MemberRemark',})}
           width="md"
           name="Remark"
         />

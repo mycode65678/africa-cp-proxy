@@ -75,11 +75,11 @@ export default [
     path: 'report',
     // component: './Order/report',
     routes: [
-      {
-        name: 'day_report',
-        path: 'day_report',
-        component: './report/day_report',
-      },
+      // {
+      //   name: 'day_report',
+      //   path: 'day_report',
+      //   component: './report/day_report',
+      // },
       {
         name: 'user_report',
         path: 'user_report',
