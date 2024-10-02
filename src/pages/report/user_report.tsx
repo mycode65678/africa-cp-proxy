@@ -96,56 +96,56 @@ const TableList: React.FC = () => {
       dataIndex: 'Date',
       search: false,
     },
-    {
-      title: intl.formatMessage({id: 'AircraftBetAmount'}),
-      dataIndex: 'PlaneBetAmount',
-      search: false,
-    },
-    {
-      title: intl.formatMessage({id: 'AircraftWinningAmount'}),
-      dataIndex: 'PlaneWinAmount',
-      search: false,
-    },
+    // {
+    //   title: intl.formatMessage({id: 'AircraftBetAmount'}),
+    //   dataIndex: 'PlaneBetAmount',
+    //   search: false,
+    // },
+    // {
+    //   title: intl.formatMessage({id: 'AircraftWinningAmount'}),
+    //   dataIndex: 'PlaneWinAmount',
+    //   search: false,
+    // },
     {
       title: intl.formatMessage({id: 'AircraftWaterBackAmount'}),
       dataIndex: 'PlaneRebateAmount',
       search: false,
     },
-    {
-      title: intl.formatMessage({id: 'AircraftProfitAndLossAmount'}),
-      dataIndex: 'PlaneProfit',
-      search: false,
-      render: (_, record) => {
-        let res = record.PlaneBetAmount - record.PlaneWinAmount - record.PlaneRebateAmount
-        res = parseFloat(res).toFixed(2)
-        return <span style={{color: res > 0 ? 'red' : 'green'}}>{res}</span>
-      }
-    },
-    {
-      title: intl.formatMessage({id: 'LotteryBetAmount'}),
-      dataIndex: 'LotteryBetAmount',
-      search: false,
-    },
-    {
-      title: intl.formatMessage({id: 'LotteryWinningAmount'}),
-      dataIndex: 'LotteryWinAmount',
-      search: false,
-    },
+    // {
+    //   title: intl.formatMessage({id: 'AircraftProfitAndLossAmount'}),
+    //   dataIndex: 'PlaneProfit',
+    //   search: false,
+    //   render: (_, record) => {
+    //     let res = record.PlaneBetAmount - record.PlaneWinAmount - record.PlaneRebateAmount
+    //     res = parseFloat(res).toFixed(2)
+    //     return <span style={{color: res > 0 ? 'red' : 'green'}}>{res}</span>
+    //   }
+    // },
+    // {
+    //   title: intl.formatMessage({id: 'LotteryBetAmount'}),
+    //   dataIndex: 'LotteryBetAmount',
+    //   search: false,
+    // },
+    // {
+    //   title: intl.formatMessage({id: 'LotteryWinningAmount'}),
+    //   dataIndex: 'LotteryWinAmount',
+    //   search: false,
+    // },
     {
       title: intl.formatMessage({id: 'LotteryWaterBackAmount'}),
       dataIndex: 'LotteryRebateAmount',
       search: false,
     },
-    {
-      title: intl.formatMessage({id: 'LotteryProfitAndLossAmount'}),
-      dataIndex: 'Profit',
-      search: false,
-      render: (_, record) => {
-        let res = record.LotteryBetAmount - record.LotteryWinAmount - record.LotteryRebateAmount
-        res = parseFloat(res).toFixed(2)
-        return <span style={{color: res > 0 ? 'red' : 'green'}}>{res}</span>
-      }
-    },
+    // {
+    //   title: intl.formatMessage({id: 'LotteryProfitAndLossAmount'}),
+    //   dataIndex: 'Profit',
+    //   search: false,
+    //   render: (_, record) => {
+    //     let res = record.LotteryBetAmount - record.LotteryWinAmount - record.LotteryRebateAmount
+    //     res = parseFloat(res).toFixed(2)
+    //     return <span style={{color: res > 0 ? 'red' : 'green'}}>{res}</span>
+    //   }
+    // },
 
     // {
     //   title: '操作',

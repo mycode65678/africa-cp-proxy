@@ -112,11 +112,11 @@ const TableList: React.FC = () => {
         return record.UserAccount.Balance
       }
     },
-    {
-      title: intl.formatMessage({id: 'Rebate',}),
-      search: false,
-      dataIndex: 'Rebate',
-    },
+    // {
+    //   title: intl.formatMessage({id: 'Rebate',}),
+    //   search: false,
+    //   dataIndex: 'Rebate',
+    // },
     {
       title: intl.formatMessage({id: 'Status',}),
       dataIndex: 'Status',
@@ -138,19 +138,19 @@ const TableList: React.FC = () => {
     //   dataIndex: 'LoginIp',
     // },
 
-    {
-      title: intl.formatMessage({id: 'Operation',}),
-      dataIndex: '',
-      search: false,
-      key: 'x',
-      render: (_, record) => {
-        return [
-          <Button type="primary" style={{marginRight:"5px"}} onClick={() => edit(record)}>
-            {intl.formatMessage({id: 'Edit',})}
-          </Button>,
-        ]
-      },
-    },
+    // {
+    //   title: intl.formatMessage({id: 'Operation',}),
+    //   dataIndex: '',
+    //   search: false,
+    //   key: 'x',
+    //   render: (_, record) => {
+    //     return [
+    //       <Button type="primary" style={{marginRight:"5px"}} onClick={() => edit(record)}>
+    //         {intl.formatMessage({id: 'Edit',})}
+    //       </Button>,
+    //     ]
+    //   },
+    // },
   ];
 
 

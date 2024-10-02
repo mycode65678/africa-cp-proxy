@@ -6,12 +6,13 @@ import React, { useRef, useState,useEffect } from 'react';
 import useStyles from './Center.style';
 import ProForm, {ProFormDigit} from "@ant-design/pro-form";
 import { useModel } from 'umi';
-import {queryCurrentUser, userUpdate, WithdrawAdd} from "@/services/api";
+import {queryCurrentUser, ReportLists, WithdrawAdd} from "@/services/api";
 const Center: React.FC = () => {
   const { styles } = useStyles();
   const intl = useIntl();
 
   const [data, setData] = useState(null); // 初始化为 null 或空对象
+  const [TodayIncome, setTodayIncome] = useState(0); // 初始化为 null 或空对象
 
   useEffect(() => {
     // 模拟异步请求
@@ -20,7 +21,19 @@ const Center: React.FC = () => {
       setData(response.data.info); // 请求成功后更新状态
     };
 
+    const fetchReportLists = async () => {
+      const response = await ReportLists({
+        Self: 1,
+        limit: 1,
+      }); // 假设这是你的异步请求函数
+      if(response.data?.length > 0) {
+        let res = response.data[0].LotteryRebateAmount + response.data[0].PlaneRebateAmount
+        setTodayIncome(res); // 请求成功后更新状态
+      }
+    }
+
     fetchData(); // 在组件挂载时触发请求
+    fetchReportLists();
   }, []); // 空依赖数组表示只在组件首次挂载时执行
   const [copied, setCopied] = useState(false);
   const handleCopy = () => {
@@ -52,6 +65,7 @@ const Center: React.FC = () => {
               </div>
               {intl.formatMessage({id:"InvitationCode"})}：{data?.InvitationCode} <Button type="primary" onClick={handleCopy}>{intl.formatMessage({id:"copyInvitationCode"})}</Button>
               <Divider dashed />
+              {intl.formatMessage({id:"TodayIncome"})}：<Tag color={"green"}>{ parseFloat(TodayIncome).toFixed(2) }</Tag>
               {intl.formatMessage({id:"CurrentBalance"})}：<Tag color={"blue"}>{data?.UserAccount?.Balance}</Tag>
               <Divider dashed />
             {/*  表单提现*/}
