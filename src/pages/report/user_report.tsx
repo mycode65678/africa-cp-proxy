@@ -205,17 +205,17 @@ const TableList: React.FC = () => {
           labelWidth: 120,
         }} // toolBarRender={}
         // scroll={{x: "max-content"}}
-        toolBarRender={() => [
-          <Button
-            type="primary"
-            key="primary"
-            onClick={() => {
-              setShowUpAndDownVisible(true);
-            }}
-          >
-            操作回水
-          </Button>,
-        ]}
+        // toolBarRender={() => [
+        //   <Button
+        //     type="primary"
+        //     key="primary"
+        //     onClick={() => {
+        //       setShowUpAndDownVisible(true);
+        //     }}
+        //   >
+        //     操作回水
+        //   </Button>,
+        // ]}
         request={getList}
         columns={columns}
       />
