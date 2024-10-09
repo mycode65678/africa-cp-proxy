@@ -58,6 +58,8 @@
   "单": "单",
   "双": "双",
   "Settled": "已结算",
+  "ContactInformation": "联系方式",
+  "ContactInformationRemark": "便于你的推广会员能够联系到您",
   "InProgress": "进行中",
   "UpdatedAt": "结算时间",
   "Date": "日期",

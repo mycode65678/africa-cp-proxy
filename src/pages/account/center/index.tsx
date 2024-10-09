@@ -1,15 +1,16 @@
 import { ClusterOutlined, ContactsOutlined, HomeOutlined, PlusOutlined } from '@ant-design/icons';
-import {GridContent, ProFormDependency, ProFormRadio} from '@ant-design/pro-components';
+import {GridContent, ProFormDependency, ProFormRadio, ProFormText} from '@ant-design/pro-components';
 import { useRequest,useIntl } from '@umijs/max';
 import {Avatar, Button, Card, Col, Divider, Input, InputRef, message, Row, Tag} from 'antd';
 import React, { useRef, useState,useEffect } from 'react';
 import useStyles from './Center.style';
 import ProForm, {ProFormDigit} from "@ant-design/pro-form";
 import { useModel } from 'umi';
-import {queryCurrentUser, ReportLists, WithdrawAdd} from "@/services/api";
+import {queryCurrentUser, ReportLists, UpdateContact, WithdrawAdd} from "@/services/api";
 const Center: React.FC = () => {
   const { styles } = useStyles();
   const intl = useIntl();
+  const formRef = useRef();
 
   const [data, setData] = useState(null); // 初始化为 null 或空对象
   const [TodayIncome, setTodayIncome] = useState(0); // 初始化为 null 或空对象
@@ -19,6 +20,12 @@ const Center: React.FC = () => {
     const fetchData = async () => {
       const response = await queryCurrentUser(); // 假设这是你的异步请求函数
       setData(response.data.info); // 请求成功后更新状态
+      setTimeout(() => {
+        formRef.current?.setFieldsValue({
+          WhatsApp: response.data.info.Whatsapp,
+          Telegram: response.data.info.Telegram,
+        });
+      }, 100);
     };
 
     const fetchReportLists = async () => {
@@ -152,6 +159,45 @@ const Center: React.FC = () => {
                 />
               </ProForm>
             </div>
+          </Card>
+        </Col>
+        <Col lg={7} md={24}>
+          <Card
+            bordered={false}
+            style={{
+              marginBottom: 24,
+            }}
+          >
+            <div>
+              <div className={styles.avatarHolder}>
+                <div className={styles.name}>{intl.formatMessage({id:"ContactInformation"})}</div>
+                <div>{intl.formatMessage({id:"ContactInformationRemark"})}</div>
+                <ProForm
+                  formRef={formRef}
+                  onFinish={async (values) => {
+                    const res = await  UpdateContact(values)
+                    if (Number(res.code) == 0) {
+                      message.success(res.msg);
+                    } else {
+                      message.error(res.msg);
+                    }
+                  }}
+                >
+                  <ProFormText
+                    label={intl.formatMessage({id:"WhastsApp"})}
+                    name="WhatsApp"
+                    width="md"
+                  />
+                  <ProFormText
+                    label={intl.formatMessage({id:"Telegram"})}
+                    name="Telegram"
+                    width="md"
+                  />
+                </ProForm>
+
+              </div>
+            </div>
+
           </Card>
         </Col>
       </Row>

@@ -1873,6 +1873,15 @@ export async function WithdrawAdd(body: API.LoginParams, options?: { [key: strin
   });
 }
 
+// UpdateContact
+export async function UpdateContact(body: API.LoginParams, options?: { [key: string]: any }) {
+  return request<API.LoginResult>('/api/proxy/update-contact', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  });
+}
+
 // PorxyAdd
 export async function PorxyAdd(params) {
   return request<API.LoginResult>('/api/proxy/user-add', {

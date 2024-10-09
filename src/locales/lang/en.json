@@ -9,6 +9,8 @@
   "CardNumber": "card number",
   "ChangePassword": "Change Password",
   "ChangePasswordSuccess": "Modification successful",
+  "ContactInformation": "Contact Details",
+  "ContactInformationRemark": "Make it easy for your affiliates to contact you",
   "CreatedAt": "Order time",
   "CurrentBalance": "Current Balance",
   "Date": "date",
