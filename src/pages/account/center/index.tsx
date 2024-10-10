@@ -106,12 +106,10 @@ const Center: React.FC = () => {
                   {({ WithdrawType }) => {
                     if (WithdrawType === 'airtel malawi') {
                       return (
-                        <ProFormDigit
+                        <ProFormText
                           label={intl.formatMessage({id:"Phone"})}
                           name="Phone"
                           width="md"
-                          min={1}
-                          max={100}
                         />
                       );
                     }
@@ -119,28 +117,22 @@ const Center: React.FC = () => {
                       return (
                         <>
                         {/*  银行户名 */}
-                        <ProFormDigit
+                        <ProFormText
                           label={intl.formatMessage({id:"BankName"})}
                           name="BankName"
                           width="md"
-                          min={1}
-                          max={100}
                         />
                         {/*  银行户名 */}
-                        <ProFormDigit
+                        <ProFormText
                           label={intl.formatMessage({id:"BankAccount"})}
                           name="BankAccount"
                           width="md"
-                          min={1}
-                          max={100}
                         />
                         {/*  卡号 */}
-                        <ProFormDigit
+                        <ProFormText
                           label={intl.formatMessage({id:"CardNumber"})}
                           name="CardNumber"
                           width="md"
-                          min={1}
-                          max={100}
                         />
                         </>
                       );
@@ -155,7 +147,6 @@ const Center: React.FC = () => {
                   name="Price"
                   width="md"
                   min={1}
-                  max={100}
                 />
               </ProForm>
             </div>
