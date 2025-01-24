@@ -6,7 +6,7 @@ import React, { useRef, useState,useEffect } from 'react';
 import useStyles from './Center.style';
 import ProForm, {ProFormDigit} from "@ant-design/pro-form";
 import { useModel } from 'umi';
-import {queryCurrentUser, ReportLists, UpdateContact, WithdrawAdd} from "@/services/api";
+import {queryCurrentUser, ReportLists, UpdateContact, WithdrawAdd, SettingsLists} from "@/services/api";
 const Center: React.FC = () => {
   const { styles } = useStyles();
   const intl = useIntl();
@@ -14,6 +14,7 @@ const Center: React.FC = () => {
 
   const [data, setData] = useState(null); // 初始化为 null 或空对象
   const [TodayIncome, setTodayIncome] = useState(0); // 初始化为 null 或空对象
+  const [inviteLink, setInviteLink] = useState(''); // 添加邀请链接状态
 
   useEffect(() => {
     // 模拟异步请求
@@ -39,14 +40,36 @@ const Center: React.FC = () => {
       }
     }
 
+    // 获取站点设置
+    const fetchSettings = async () => {
+      const response = await SettingsLists({});
+      if(response.data?.app_promotion?.Value) {
+        // 构建邀请链接
+        const baseUrl = response.data.app_promotion.Value;
+        setInviteLink(`${baseUrl}/#/pages/login/register?code=${data?.InvitationCode}`);
+      }
+    };
+
     fetchData(); // 在组件挂载时触发请求
     fetchReportLists();
-  }, []); // 空依赖数组表示只在组件首次挂载时执行
+    fetchSettings(); // 调用获取设置
+  }, [data?.InvitationCode]); // 依赖邀请码变化
   const [copied, setCopied] = useState(false);
   const handleCopy = () => {
     navigator.clipboard.writeText(data?.InvitationCode).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000); // 2秒后重置复制状态
+      message.success(intl.formatMessage({ id: 'pages.account.center.copy.success' }));
+    }).catch(err => {
+      console.error('复制失败', err);
+    });
+  };
+
+  // 复制邀请链接
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(inviteLink).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
       message.success(intl.formatMessage({ id: 'pages.account.center.copy.success' }));
     }).catch(err => {
       console.error('复制失败', err);
@@ -71,6 +94,8 @@ const Center: React.FC = () => {
 
               </div>
               {intl.formatMessage({id:"InvitationCode"})}：{data?.InvitationCode} <Button type="primary" onClick={handleCopy}>{intl.formatMessage({id:"copyInvitationCode"})}</Button>
+              <Divider dashed />
+              {intl.formatMessage({id:"InvitationLink"})}：{inviteLink} <Button type="primary" onClick={handleCopyLink}>{intl.formatMessage({id:"copyInvitationLink"})}</Button>
               <Divider dashed />
               {intl.formatMessage({id:"TodayIncome"})}：<Tag color={"green"}>{ parseFloat(TodayIncome).toFixed(2) }</Tag>
               {intl.formatMessage({id:"CurrentBalance"})}：<Tag color={"blue"}>{data?.UserAccount?.Balance}</Tag>
