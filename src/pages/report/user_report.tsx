@@ -136,6 +136,11 @@ const TableList: React.FC = () => {
       dataIndex: 'LotteryRebateAmount',
       search: false,
     },
+    {
+      title: intl.formatMessage({id: 'GameRebateAmount'}),
+      dataIndex: 'GameRebateAmount',
+      search: false,
+    },
     // {
     //   title: intl.formatMessage({id: 'LotteryProfitAndLossAmount'}),
     //   dataIndex: 'Profit',
