@@ -18,7 +18,10 @@ export async function login(body: API.LoginParams, options?: { [key: string]: an
   });
 }
 // DebtType
-export async function TransactionDetailsType(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function TransactionDetailsType(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/transaction-details-type', {
     method: 'POST',
     data: body,
@@ -31,16 +34,16 @@ export async function ChangePass(body: API.LoginParams, options?: { [key: string
     method: 'POST',
     data: body,
     ...(options || {}),
-  })
+  });
 }
 
 // CreateVirtualUser
 export async function CreateVirtualUser(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/create-virtual-user', {
-        method: 'POST',
-        data: body,
-        ...(options || {}),
-    });
+  return request<API.LoginResult>('/api/proxy/create-virtual-user', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  });
 }
 
 // UserAdjustment
@@ -49,7 +52,7 @@ export async function UserAdjustment(body: API.LoginParams, options?: { [key: st
     method: 'POST',
     data: body,
     ...(options || {}),
-  })
+  });
 }
 
 // UserDelete 删除用户
@@ -62,19 +65,22 @@ export async function UserDelete(body: API.LoginParams, options?: { [key: string
 }
 
 // DebtList
-export async function TransactionDetailsLists(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function TransactionDetailsLists(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/transaction-details-lists', {
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
@@ -100,30 +106,33 @@ export async function BannerList(body: API.LoginParams, options?: { [key: string
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 // PaymentManagementLists 收款管理列表
-export async function PaymentManagementLists(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function PaymentManagementLists(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/payment-management-lists', {
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
@@ -152,19 +161,22 @@ export async function ArticleLists(body: API.LoginParams, options?: { [key: stri
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
 // PaymentManagementAdd 收款管理添加
-export async function PaymentManagementAdd(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function PaymentManagementAdd(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/payment-management-add', {
     method: 'POST',
     data: body,
@@ -182,7 +194,10 @@ export async function RechargeNumberAdd(body: API.LoginParams, options?: { [key:
 }
 
 // RechargeNumberDelete 充值号码删除
-export async function RechargeNumberDelete(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function RechargeNumberDelete(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/recharge-number-delete', {
     method: 'POST',
     data: body,
@@ -196,19 +211,22 @@ export async function RechargeNumberLists(body: API.LoginParams, options?: { [ke
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
 // PaymentManagementDelete 收款管理删除
-export async function PaymentManagementDelete(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function PaymentManagementDelete(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/payment-management-delete', {
     method: 'POST',
     data: body,
@@ -231,14 +249,14 @@ export async function ProductLists(body: API.LoginParams, options?: { [key: stri
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
-      return Promise.resolve({
-          data: response.data.Items,
-          total: response.data.Pagination?.totalRecords,
-          pageSize: response.data.Pagination?.limit,
-          current: response.data.Pagination?.page,
-          success: true,
-      })
+  }).then((response) => {
+    return Promise.resolve({
+      data: response.data.Items,
+      total: response.data.Pagination?.totalRecords,
+      pageSize: response.data.Pagination?.limit,
+      current: response.data.Pagination?.page,
+      success: true,
+    });
   });
 }
 
@@ -286,14 +304,14 @@ export async function MessageLists(body: API.LoginParams, options?: { [key: stri
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
@@ -303,9 +321,9 @@ export async function OTPConfig(body: API.LoginParams, options?: { [key: string]
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
-    return Promise.resolve(response)
-  })
+  }).then((response) => {
+    return Promise.resolve(response);
+  });
 }
 
 // GoogleBind 谷歌绑定
@@ -314,7 +332,7 @@ export async function GoogleBind(body: API.LoginParams, options?: { [key: string
     method: 'POST',
     data: body,
     ...(options || {}),
-  })
+  });
 }
 
 // MessageDelete 消息删除
@@ -332,14 +350,14 @@ export async function WithdrawList(body: API.LoginParams, options?: { [key: stri
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
@@ -358,25 +376,25 @@ export async function SettingsLists(body: API.LoginParams, options?: { [key: str
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
-    return Promise.resolve(response)
+  }).then((response) => {
+    return Promise.resolve(response);
   });
 }
 // Upload
 export async function UploadApi(body: API.LoginParams, options?: { [key: string]: any }) {
-  if(options === undefined) {
-    options = {}
+  if (options === undefined) {
+    options = {};
   }
-  options["headers"] = {
-    'Content-Type': 'multipart/form-data'
-  }
-  console.log("body", body)
+  options['headers'] = {
+    'Content-Type': 'multipart/form-data',
+  };
+  console.log('body', body);
   return request<API.LoginResult>('/api/proxy/upload', {
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
-    return Promise.resolve(response.data)
+  }).then((response) => {
+    return Promise.resolve(response.data);
   });
 }
 // AdminDelete
@@ -422,11 +440,11 @@ export async function MonetaryFunctionAdd(body: API.LoginParams, options?: { [ke
 
 // OrderDel
 export async function OrderDel(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/order-delete', {
-        method: 'POST',
-        data: body,
-        ...(options || {}),
-    });
+  return request<API.LoginResult>('/api/proxy/order-delete', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  });
 }
 
 // OrderCancel 取消订单
@@ -449,11 +467,11 @@ export async function NoticeDel(body: API.LoginParams, options?: { [key: string]
 
 // GenToken
 export async function GenToken(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/gen-token', {
-        method: 'POST',
-        data: body,
-        ...(options || {}),
-    });
+  return request<API.LoginResult>('/api/proxy/gen-token', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  });
 }
 
 // LoginKeyAdd 添加登录密钥
@@ -465,23 +483,22 @@ export async function LoginKeyAdd(body: API.LoginParams, options?: { [key: strin
   });
 }
 
-
 // StatusChange
 export async function StatusChange(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/order-status-update', {
-        method: 'POST',
-        data: body,
-        ...(options || {}),
-    });
+  return request<API.LoginResult>('/api/proxy/order-status-update', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  });
 }
 
 // ReleaseFunds
 export async function ReleaseFunds(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/release-funds', {
-        method: 'POST',
-        data: body,
-        ...(options || {}),
-    });
+  return request<API.LoginResult>('/api/proxy/release-funds', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  });
 }
 
 // SendNotice
@@ -499,14 +516,14 @@ export async function NoticeList(body: API.LoginParams, options?: { [key: string
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
@@ -516,14 +533,14 @@ export async function ShopTrainList(body: API.LoginParams, options?: { [key: str
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 // ShopTrainAdd
@@ -567,14 +584,14 @@ export async function CustomerList(body: API.LoginParams, options?: { [key: stri
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
@@ -586,7 +603,6 @@ export async function LeaveDel(body: API.LoginParams, options?: { [key: string]:
     ...(options || {}),
   });
 }
-
 
 // DelOrderRecord
 export async function DelOrderRecord(body: API.LoginParams, options?: { [key: string]: any }) {
@@ -632,24 +648,22 @@ export async function BurstOrderDel(body: API.LoginParams, options?: { [key: str
   });
 }
 
-
 // TaskOrderList
 export async function TaskOrderList(body: API.LoginParams, options?: { [key: string]: any }) {
   return request<API.LoginResult>('/api/proxy/task-order-list', {
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
-      return Promise.resolve({
-          data: response.data.Items,
-          total: response.data.Pagination?.totalRecords,
-          pageSize: response.data.Pagination?.limit,
-          current: response.data.Pagination?.page,
-          success: true,
-      })
+  }).then((response) => {
+    return Promise.resolve({
+      data: response.data.Items,
+      total: response.data.Pagination?.totalRecords,
+      pageSize: response.data.Pagination?.limit,
+      current: response.data.Pagination?.page,
+      success: true,
+    });
   });
 }
-
 
 // BurstOrderList
 export async function BurstOrderList(body: API.LoginParams, options?: { [key: string]: any }) {
@@ -657,18 +671,16 @@ export async function BurstOrderList(body: API.LoginParams, options?: { [key: st
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
-
-
 
 // LeaveAdd
 export async function LeaveAdd(body: API.LoginParams, options?: { [key: string]: any }) {
@@ -685,17 +697,19 @@ export async function LeaveList(body: API.LoginParams, options?: { [key: string]
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
-    return Promise.resolve(response)
-  }).then(response => {
-    return Promise.resolve({
-      data: response.data.Items,
-      total: response.data.Pagination?.totalRecords,
-      pageSize: response.data.Pagination?.limit,
-      current: response.data.Pagination?.page,
-      success: true,
+  })
+    .then((response) => {
+      return Promise.resolve(response);
     })
-  });
+    .then((response) => {
+      return Promise.resolve({
+        data: response.data.Items,
+        total: response.data.Pagination?.totalRecords,
+        pageSize: response.data.Pagination?.limit,
+        current: response.data.Pagination?.page,
+        success: true,
+      });
+    });
 }
 
 // ShopLevelList
@@ -704,14 +718,14 @@ export async function ShopLevelList(body: API.LoginParams, options?: { [key: str
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
@@ -721,34 +735,36 @@ export async function LevelLists(body: API.LoginParams, options?: { [key: string
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
 // PrizeDrawRecordLists 中奖记录
-export async function PrizeDrawRecordLists(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function PrizeDrawRecordLists(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/prize-draw-record-lists', {
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
-
 
 // LevelAdd 会员等级添加
 export async function LevelAdd(body: API.LoginParams, options?: { [key: string]: any }) {
@@ -786,21 +802,23 @@ export async function ShopLevelDel(body: API.LoginParams, options?: { [key: stri
   });
 }
 
-
 // MonetaryFunctionList
-export async function MonetaryFunctionList(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function MonetaryFunctionList(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/monetary-function-list', {
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
@@ -824,20 +842,20 @@ export async function WorkOrderDel(body: API.LoginParams, options?: { [key: stri
 
 // DialogueReply
 export async function DialogueReply(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/dialogue-reply', {
-        method: 'POST',
-        data: body,
-        ...(options || {}),
-    });
+  return request<API.LoginResult>('/api/proxy/dialogue-reply', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  });
 }
 
 // DialogueDel
 export async function DialogueDel(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/dialogue-del', {
-        method: 'POST',
-        data: body,
-        ...(options || {}),
-    });
+  return request<API.LoginResult>('/api/proxy/dialogue-del', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  });
 }
 
 // WorkOrderReply
@@ -855,34 +873,34 @@ export async function WorkOrderList(body: API.LoginParams, options?: { [key: str
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
 // LogisticsDel
 export async function LogisticsDel(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/logistics-del', {
-        method: 'POST',
-        data: body,
-        ...(options || {}),
-    });
+  return request<API.LoginResult>('/api/proxy/logistics-del', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  });
 }
 
 // LogisticsAdd
 export async function LogisticsAdd(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/logistics-add', {
-        method: 'POST',
-        requestType:"json",
-        data: body,
-        ...(options || {}),
-    });
+  return request<API.LoginResult>('/api/proxy/logistics-add', {
+    method: 'POST',
+    requestType: 'json',
+    data: body,
+    ...(options || {}),
+  });
 }
 
 // ResetOrderRecord
@@ -899,97 +917,103 @@ export async function OrderProgress(body: API.LoginParams, options?: { [key: str
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 // LogisticsList
 export async function LogisticsList(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/logistics-list', {
-        method: 'POST',
-        data: body,
-        ...(options || {}),
-    }).then(response => {
-      return Promise.resolve({
-        data: response.data.Items,
-        total: response.data.Pagination?.totalRecords,
-        pageSize: response.data.Pagination?.limit,
-        current: response.data.Pagination?.page,
-        success: true,
-      })
+  return request<API.LoginResult>('/api/proxy/logistics-list', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  }).then((response) => {
+    return Promise.resolve({
+      data: response.data.Items,
+      total: response.data.Pagination?.totalRecords,
+      pageSize: response.data.Pagination?.limit,
+      current: response.data.Pagination?.page,
+      success: true,
     });
+  });
 }
 
 // CronList
 export async function CronList(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/cron-list', {
-        method: 'POST',
-        data: body,
-        ...(options || {}),
-    }).then(response => {
-      return Promise.resolve({
-        data: response.data.Items,
-        total: response.data.Pagination?.totalRecords,
-        pageSize: response.data.Pagination?.limit,
-        current: response.data.Pagination?.page,
-        success: true,
-      })
+  return request<API.LoginResult>('/api/proxy/cron-list', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  }).then((response) => {
+    return Promise.resolve({
+      data: response.data.Items,
+      total: response.data.Pagination?.totalRecords,
+      pageSize: response.data.Pagination?.limit,
+      current: response.data.Pagination?.page,
+      success: true,
     });
+  });
 }
 
 // ShippingAddressList
 export async function ShippingAddressList(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/shipping-address-list', {
-        method: 'POST',
-        data: body,
-        ...(options || {}),
-    }).then(response => {
-      return Promise.resolve({
-        data: response.data.Items,
-        total: response.data.Pagination?.totalRecords,
-        pageSize: response.data.Pagination?.limit,
-        current: response.data.Pagination?.page,
-        success: true,
-      })
+  return request<API.LoginResult>('/api/proxy/shipping-address-list', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  }).then((response) => {
+    return Promise.resolve({
+      data: response.data.Items,
+      total: response.data.Pagination?.totalRecords,
+      pageSize: response.data.Pagination?.limit,
+      current: response.data.Pagination?.page,
+      success: true,
     });
+  });
 }
 
 // GoogleLog 二次验证日志
 export async function GoogleLog(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/google-log', {
-        method: 'POST',
-        data: body,
-        ...(options || {}),
-    }).then(response => {
-      return Promise.resolve(response)
-    });
+  return request<API.LoginResult>('/api/proxy/google-log', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  }).then((response) => {
+    return Promise.resolve(response);
+  });
 }
 
 // ShippingAddressList
-export async function VirtualShippingAddressList(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function VirtualShippingAddressList(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/virtual-shipping-address-list', {
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
-      return Promise.resolve({
-          data: response.data.Items,
-          total: response.data.Pagination?.totalRecords,
-          pageSize: response.data.Pagination?.limit,
-          current: response.data.Pagination?.page,
-          success: true,
-      })
+  }).then((response) => {
+    return Promise.resolve({
+      data: response.data.Items,
+      total: response.data.Pagination?.totalRecords,
+      pageSize: response.data.Pagination?.limit,
+      current: response.data.Pagination?.page,
+      success: true,
+    });
   });
 }
 
 // ShippingAddressDelete 删除收货地址
-export async function ShippingAddressDelete(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function ShippingAddressDelete(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/shipping-address-del', {
     method: 'POST',
     data: body,
@@ -1007,42 +1031,45 @@ export async function ShippingAddressAdd(body: API.LoginParams, options?: { [key
 }
 
 // DesignatedDrawAdd
-export function DesignatedDrawAdd (data) {
-  return request("/api/proxy/DesignatedDraw-add", {
+export function DesignatedDrawAdd(data) {
+  return request('/api/proxy/DesignatedDraw-add', {
     data: data,
     requestType: 'form',
-    method: 'POST'
+    method: 'POST',
   });
 }
 
 // PrizeDrawLists
-export function PrizeDrawLists (data) {
-  return request("/api/proxy/PrizeDraw-lists", {
+export function PrizeDrawLists(data) {
+  return request('/api/proxy/PrizeDraw-lists', {
     data: data,
     requestType: 'form',
-    method: 'POST'
+    method: 'POST',
   });
 }
 // PrizeDrawDel
-export function PrizeDrawDel (data) {
-  return request("/api/proxy/PrizeDraw-del", {
+export function PrizeDrawDel(data) {
+  return request('/api/proxy/PrizeDraw-del', {
     data: data,
     requestType: 'form',
-    method: 'POST'
+    method: 'POST',
   });
 }
 
 // PrizeDrawAdd
-export function PrizeDrawAdd (data) {
-  return request("/api/proxy/PrizeDraw-add", {
+export function PrizeDrawAdd(data) {
+  return request('/api/proxy/PrizeDraw-add', {
     data: data,
     requestType: 'form',
-    method: 'POST'
+    method: 'POST',
   });
 }
 
 // ShippingAddressAdd
-export async function VirtualShippingAddressAdd(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function VirtualShippingAddressAdd(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/virtual-shipping-address-add', {
     method: 'POST',
     data: body,
@@ -1051,7 +1078,10 @@ export async function VirtualShippingAddressAdd(body: API.LoginParams, options?:
 }
 
 // ShippingAddressDel
-export async function VirtualShippingAddressDel(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function VirtualShippingAddressDel(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/virtual-shipping-address-del', {
     method: 'POST',
     data: body,
@@ -1065,14 +1095,14 @@ export async function DeliveryAddressList(body: API.LoginParams, options?: { [ke
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 // DeliveryAddressAdd
@@ -1097,31 +1127,34 @@ export async function GoodsLists(body: API.LoginParams, options?: { [key: string
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
 // ProductSpecificationsLists
-export async function ProductSpecificationsLists(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function ProductSpecificationsLists(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/product-specifications-list', {
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
@@ -1131,19 +1164,22 @@ export async function IndustryLists(body: API.LoginParams, options?: { [key: str
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
 // MerchantApplicationAdd 商户申请添加
-export async function MerchantApplicationAdd(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function MerchantApplicationAdd(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/merchant-application-add', {
     method: 'POST',
     data: body,
@@ -1152,24 +1188,30 @@ export async function MerchantApplicationAdd(body: API.LoginParams, options?: { 
 }
 
 // MerchantApplicationLists 商户申请列表
-export async function MerchantApplicationLists(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function MerchantApplicationLists(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/merchant-application-lists', {
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
 // MerchantApplicationDelete 商户申请删除
-export async function MerchantApplicationDelete(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function MerchantApplicationDelete(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/merchant-application-delete', {
     method: 'POST',
     data: body,
@@ -1196,24 +1238,30 @@ export async function IndustryDelete(body: API.LoginParams, options?: { [key: st
 }
 
 // ProductParametersLists
-export async function ProductParametersLists(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function ProductParametersLists(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/product-parameters-list', {
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
 // ProductParametersAdd
-export async function ProductParametersAdd(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function ProductParametersAdd(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/product-parameters-add', {
     method: 'POST',
     data: body,
@@ -1222,7 +1270,10 @@ export async function ProductParametersAdd(body: API.LoginParams, options?: { [k
 }
 
 // ProductSpecificationsAdd
-export async function ProductSpecificationsAdd(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function ProductSpecificationsAdd(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/product-specifications-add', {
     method: 'POST',
     data: body,
@@ -1231,7 +1282,10 @@ export async function ProductSpecificationsAdd(body: API.LoginParams, options?: 
 }
 
 // ProductParametersDelete
-export async function ProductParametersDelete(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function ProductParametersDelete(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/product-parameters-delete', {
     method: 'POST',
     data: body,
@@ -1240,7 +1294,10 @@ export async function ProductParametersDelete(body: API.LoginParams, options?: {
 }
 
 // ProductSpecificationsDelete
-export async function ProductSpecificationsDelete(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function ProductSpecificationsDelete(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/product-specifications-delete', {
     method: 'POST',
     data: body,
@@ -1253,14 +1310,14 @@ export async function ProductBrandLists(body: API.LoginParams, options?: { [key:
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 // ProductBrandAdd
@@ -1281,19 +1338,22 @@ export async function ProductBrandDelete(body: API.LoginParams, options?: { [key
 }
 
 //CategoryList
-export async function ProductCategoryLists(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function ProductCategoryLists(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/product-category-list', {
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 // CategoryAdd
@@ -1306,7 +1366,10 @@ export async function ProductCategoryAdd(body: API.LoginParams, options?: { [key
   });
 }
 // CategoryDel
-export async function ProductCategoryDelete(body: API.LoginParams, options?: { [key: string]: any }) {
+export async function ProductCategoryDelete(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
   return request<API.LoginResult>('/api/proxy/product-category-delete', {
     method: 'POST',
     data: body,
@@ -1319,14 +1382,14 @@ export async function AdminList(body: API.LoginParams, options?: { [key: string]
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
@@ -1345,14 +1408,14 @@ export async function PayRecordList(body: API.LoginParams, options?: { [key: str
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
@@ -1366,159 +1429,178 @@ export async function ShopUpdate(body: API.LoginParams, options?: { [key: string
 }
 // ShopList
 export async function ShopList(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/shop-list', {
-        method: 'POST',
-        data: body,
-        ...(options || {}),
-    }).then(response => {
-        return Promise.resolve({
-        data: response.data.Items,
-        total: response.data.Pagination?.totalRecords,
-        pageSize: response.data.Pagination?.limit,
-        current: response.data.Pagination?.page,
-        success: true,
-        })
-    });
-}
-// Timer
-export async function Timer(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/timer', {
-        method: 'POST',
-        data: body,
-        ...(options || {}),
-    }).then(response => {
-        return Promise.resolve(response)
-    });
-}
-// UserAdd
-export async function UserAdd(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/user-add', {
-        method: 'POST',
-        data: body,
-        ...(options || {}),
-    });
-}
-
-
-// OrderAdd
-export async function OrderAdd(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/order-add', {
-        method: 'POST',
-        requestType: 'json',
-        data: body,
-        ...(options || {}),
-    })
-}
-
-// DialogueAdd
-export async function DialogueAdd(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/dialogue-add', {
-        method: 'POST',
-        data: body,
-        ...(options || {}),
-    })
-}
-
-// DialogueList
-export async function DialogueList(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/dialogue-list', {
-        method: 'POST',
-        data: body,
-        ...(options || {}),
-    }).then(response => {
-        return Promise.resolve({
-        data: response.data.Items,
-        total: response.data.Pagination?.totalRecords,
-        pageSize: response.data.Pagination?.limit,
-        current: response.data.Pagination?.page,
-        success: true,
-        })
-    });
-}
-
-// ProductList
-export async function ProductList(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/product-list', {
-        method: 'POST',
-        data: body,
-        ...(options || {}),
-    }).then(response => {
-      return Promise.resolve({
-        data: response.data.Items,
-        total: response.data.Pagination?.totalRecords,
-        pageSize: response.data.Pagination?.limit,
-        current: response.data.Pagination?.page,
-        success: true,
-      })
-    });
-}
-
-// BusinessProductLists
-export async function BusinessProductLists(body: API.LoginParams, options?: { [key: string]: any }) {
-  return request<API.LoginResult>('/api/proxy/business-product-list', {
+  return request<API.LoginResult>('/api/proxy/shop-list', {
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
+  });
+}
+// Timer
+export async function Timer(body: API.LoginParams, options?: { [key: string]: any }) {
+  return request<API.LoginResult>('/api/proxy/timer', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  }).then((response) => {
+    return Promise.resolve(response);
+  });
+}
+// UserAdd
+export async function UserAdd(body: API.LoginParams, options?: { [key: string]: any }) {
+  return request<API.LoginResult>('/api/proxy/user-add', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  });
+}
+
+// OrderAdd
+export async function OrderAdd(body: API.LoginParams, options?: { [key: string]: any }) {
+  return request<API.LoginResult>('/api/proxy/order-add', {
+    method: 'POST',
+    requestType: 'json',
+    data: body,
+    ...(options || {}),
+  });
+}
+
+// DialogueAdd
+export async function DialogueAdd(body: API.LoginParams, options?: { [key: string]: any }) {
+  return request<API.LoginResult>('/api/proxy/dialogue-add', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  });
+}
+
+// DialogueList
+export async function DialogueList(body: API.LoginParams, options?: { [key: string]: any }) {
+  return request<API.LoginResult>('/api/proxy/dialogue-list', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  }).then((response) => {
+    return Promise.resolve({
+      data: response.data.Items,
+      total: response.data.Pagination?.totalRecords,
+      pageSize: response.data.Pagination?.limit,
+      current: response.data.Pagination?.page,
+      success: true,
+    });
+  });
+}
+
+// ProductList
+export async function ProductList(body: API.LoginParams, options?: { [key: string]: any }) {
+  return request<API.LoginResult>('/api/proxy/product-list', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  }).then((response) => {
+    return Promise.resolve({
+      data: response.data.Items,
+      total: response.data.Pagination?.totalRecords,
+      pageSize: response.data.Pagination?.limit,
+      current: response.data.Pagination?.page,
+      success: true,
+    });
+  });
+}
+
+// BusinessProductLists
+export async function BusinessProductLists(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+) {
+  return request<API.LoginResult>('/api/proxy/business-product-list', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  }).then((response) => {
+    return Promise.resolve({
+      data: response.data.Items,
+      total: response.data.Pagination?.totalRecords,
+      pageSize: response.data.Pagination?.limit,
+      current: response.data.Pagination?.page,
+      success: true,
+    });
   });
 }
 
 // OrderList
 export async function OrderLists(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/order-lists', {
-        method: 'POST',
-        data: body,
-        ...(options || {}),
-    }).then(response => {
-      return Promise.resolve({
-        data: response.data.Items,
-        total: response.data.Pagination?.totalRecords,
-        pageSize: response.data.Pagination?.limit,
-        current: response.data.Pagination?.page,
-        success: true,
-      })
+  return request<API.LoginResult>('/api/proxy/order-lists', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  }).then((response) => {
+    return Promise.resolve({
+      data: response.data.Items,
+      total: response.data.Pagination?.totalRecords,
+      pageSize: response.data.Pagination?.limit,
+      current: response.data.Pagination?.page,
+      success: true,
     });
+  });
 }
 
 // FlightOrderLists 航班订单列表
 export async function FlightOrderLists(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/flight-order-lists', {
-        method: 'POST',
-        data: body,
-        ...(options || {}),
-    }).then(response => {
-      return Promise.resolve({
-        data: response.data.Items,
-        total: response.data.Pagination?.totalRecords,
-        pageSize: response.data.Pagination?.limit,
-        current: response.data.Pagination?.page,
-        success: true,
-      })
+  return request<API.LoginResult>('/api/proxy/flight-order-lists', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  }).then((response) => {
+    return Promise.resolve({
+      data: response.data.Items,
+      total: response.data.Pagination?.totalRecords,
+      pageSize: response.data.Pagination?.limit,
+      current: response.data.Pagination?.page,
+      success: true,
     });
+  });
+}
+
+// GameBetRecordLists 游戏记录列表
+export async function GameBetRecordLists(body: API.LoginParams, options?: { [key: string]: any }) {
+  return request<API.LoginResult>('/api/proxy/game-bet-record-lists', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  }).then((response) => {
+    return Promise.resolve({
+      data: response.data.Items,
+      total: response.data.Pagination?.totalRecords,
+      pageSize: response.data.Pagination?.limit,
+      current: response.data.Pagination?.page,
+      success: true,
+    });
+  });
 }
 
 // ReportLists 报表列表
 export async function ReportLists(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/report-lists', {
-        method: 'POST',
-        data: body,
-        ...(options || {}),
-    }).then(response => {
-      return Promise.resolve({
-        data: response.data.Items,
-        total: response.data.Pagination?.totalRecords,
-        pageSize: response.data.Pagination?.limit,
-        current: response.data.Pagination?.page,
-        success: true,
-      })
+  return request<API.LoginResult>('/api/proxy/report-lists', {
+    method: 'POST',
+    data: body,
+    ...(options || {}),
+  }).then((response) => {
+    return Promise.resolve({
+      data: response.data.Items,
+      total: response.data.Pagination?.totalRecords,
+      pageSize: response.data.Pagination?.limit,
+      current: response.data.Pagination?.page,
+      success: true,
     });
+  });
 }
 
 // ReportDay 报表列表
@@ -1527,27 +1609,26 @@ export async function ReportDay(body: API.LoginParams, options?: { [key: string]
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
 // RebateOperation 返利操作
 export async function RebateOperation(body: API.LoginParams, options?: { [key: string]: any }) {
-    return request<API.LoginResult>('/api/proxy/rebate-operation', {
-        method: 'POST',
-        requestType:"json",
-        data: body,
-        ...(options || {}),
-    });
+  return request<API.LoginResult>('/api/proxy/rebate-operation', {
+    method: 'POST',
+    requestType: 'json',
+    data: body,
+    ...(options || {}),
+  });
 }
-
 
 // PlanOrderLists 计划订单列表
 export async function PlanOrderLists(body: API.LoginParams, options?: { [key: string]: any }) {
@@ -1555,14 +1636,14 @@ export async function PlanOrderLists(body: API.LoginParams, options?: { [key: st
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
@@ -1572,8 +1653,8 @@ export async function SiteOverview(body: API.LoginParams, options?: { [key: stri
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
-    return Promise.resolve(response)
+  }).then((response) => {
+    return Promise.resolve(response);
   });
 }
 
@@ -1591,14 +1672,14 @@ export async function UserLists(body: API.RoomList, options?: { [key: string]: a
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
@@ -1608,14 +1689,14 @@ export async function LotteryLists(body: API.LoginParams, options?: { [key: stri
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
@@ -1634,14 +1715,14 @@ export async function DrawHistoryLists(body: API.LoginParams, options?: { [key: 
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
@@ -1670,14 +1751,14 @@ export async function AutoBetLists(body: API.LoginParams, options?: { [key: stri
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
@@ -1705,14 +1786,14 @@ export async function MessageSettingLists(body: API.LoginParams, options?: { [ke
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
@@ -1731,14 +1812,14 @@ export async function OddsSettingLists(body: API.LoginParams, options?: { [key: 
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
@@ -1751,24 +1832,22 @@ export async function LotteryAdd(body: API.LoginParams, options?: { [key: string
   });
 }
 
-
 // BankLists 银行列表
 export async function BankLists(body: API.LoginParams, options?: { [key: string]: any }) {
   return request<API.LoginResult>('/api/proxy/bank-list', {
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
-
 
 // PeriodsLists 期数列表
 export async function PeriodsLists(body: API.LoginParams, options?: { [key: string]: any }) {
@@ -1776,14 +1855,14 @@ export async function PeriodsLists(body: API.LoginParams, options?: { [key: stri
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
@@ -1793,14 +1872,14 @@ export async function ParticipationLists(body: API.LoginParams, options?: { [key
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
@@ -1845,14 +1924,14 @@ export async function CronLists(body: API.LoginParams, options?: { [key: string]
     method: 'POST',
     data: body,
     ...(options || {}),
-  }).then(response => {
+  }).then((response) => {
     return Promise.resolve({
       data: response.data.Items,
       total: response.data.Pagination?.totalRecords,
       pageSize: response.data.Pagination?.limit,
       current: response.data.Pagination?.page,
       success: true,
-    })
+    });
   });
 }
 
