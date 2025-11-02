@@ -43,30 +43,14 @@ export default [
         name: 'proxy_lists',
         path: 'proxy_lists',
         component: './User/proxy_lists',
-      }
-    ]
+      },
+    ],
   },
   {
-    name: 'order',
+    name: 'game_record',
     icon: 'table',
-    path: 'order',
-    // component: './Order/report',
-    routes: [
-      // 彩票订单
-      {
-        name: 'order_list',
-        icon: 'table',
-        path: 'order_list',
-        component: './order/order_list',
-      },
-      {
-        name: 'FlightOrder',
-        icon: 'table',
-        path: 'FlightOrder',
-        component: './order/FlightOrder',
-      },
-      // 游戏订单
-    ]
+    path: '/game/game_record',
+    component: './game/game_record',
   },
   // 报表管理
   {
@@ -84,8 +68,8 @@ export default [
         name: 'user_report',
         path: 'user_report',
         component: './report/user_report',
-      }
-    ]
+      },
+    ],
   },
   {
     name: 'account',
