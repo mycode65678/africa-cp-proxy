@@ -95,6 +95,18 @@ export default [
     ],
   },
   {
+    name: 'commission',
+    icon: 'dollar',
+    path: '/commission',
+    routes: [
+      {
+        name: 'stats',
+        path: '/commission/stats',
+        component: './Commission/Stats',
+      },
+    ],
+  },
+  {
     path: '/',
     redirect: '/welcome',
   },
