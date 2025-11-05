@@ -114,19 +114,19 @@ const TableList: React.FC = () => {
       render: (text) => (text ? dayjs(text).format('YYYY-MM-DD') : '-'),
     },
     {
-      title: '充值金额',
+      title: intl.formatMessage({ id: 'RechargeAmount' }),
       dataIndex: 'RechargeAmount',
       search: false,
       render: (text) => formatCurrency(text),
     },
     {
-      title: '提现金额',
+      title: intl.formatMessage({ id: 'WithdrawalAmount' }),
       dataIndex: 'WithdrawAmount',
       search: false,
       render: (text) => formatCurrency(text),
     },
     {
-      title: '存提差',
+      title: intl.formatMessage({ id: 'DepositWithdrawDiff' }),
       dataIndex: 'DepositWithdrawDiff',
       search: false,
       render: (_, record) => {
@@ -178,16 +178,16 @@ const TableList: React.FC = () => {
 
           return (
             <Table.Summary.Row>
-              <Table.Summary.Cell index={0} colSpan={6}>
-                <strong>汇总</strong>
+              <Table.Summary.Cell index={0} colSpan={4}>
+                <strong>{intl.formatMessage({ id: 'Summary' })}</strong>
               </Table.Summary.Cell>
-              <Table.Summary.Cell index={6}>
+              <Table.Summary.Cell index={4}>
                 <strong>{formatCurrency(totalRecharge)}</strong>
               </Table.Summary.Cell>
-              <Table.Summary.Cell index={7}>
+              <Table.Summary.Cell index={5}>
                 <strong>{formatCurrency(totalWithdraw)}</strong>
               </Table.Summary.Cell>
-              <Table.Summary.Cell index={8}>
+              <Table.Summary.Cell index={6}>
                 <strong style={{ color: diffColor }}>{formatCurrency(totalDiff)}</strong>
               </Table.Summary.Cell>
             </Table.Summary.Row>
@@ -195,7 +195,7 @@ const TableList: React.FC = () => {
         }}
       />
       <ModalForm
-        title={'编辑用户'}
+        title={intl.formatMessage({ id: 'EditUser' })}
         layout={'horizontal'}
         width={500}
         labelCol={{ span: 4 }}
@@ -214,49 +214,66 @@ const TableList: React.FC = () => {
         }}
       >
         <ProFormText readonly={true} name={'ID'} hidden={true} />
-        <ProFormText label={'登陆邮箱'} readonly={true} width="md" name="Email" />
+        <ProFormText
+          label={intl.formatMessage({ id: 'LoginEmail' })}
+          readonly={true}
+          width="md"
+          name="Email"
+        />
         {/*  登陆密码*/}
-        <ProFormText.Password label={'登陆密码'} width="md" name="Password" />
+        <ProFormText.Password
+          label={intl.formatMessage({ id: 'LoginPassword' })}
+          width="md"
+          name="Password"
+        />
         {/*  安全密码*/}
-        <ProFormText.Password label={'安全密码'} width="md" name="SafePassword" />
+        <ProFormText.Password
+          label={intl.formatMessage({ id: 'SafePassword' })}
+          width="md"
+          name="SafePassword"
+        />
 
         {/*  账号类型*/}
         <ProFormRadio.Group
-          label={'账号类型'}
+          label={intl.formatMessage({ id: 'AccountType' })}
           width="md"
           name="Virtual"
           options={[
             {
-              label: '真实',
+              label: intl.formatMessage({ id: 'Real' }),
               value: 1,
             },
             {
-              label: '内部',
+              label: intl.formatMessage({ id: 'Internal' }),
               value: 2,
             },
           ]}
         />
         {/*  账号状态*/}
         <ProFormRadio.Group
-          label={'账号状态'}
+          label={intl.formatMessage({ id: 'AccountStatus' })}
           width="md"
           name="Status"
           options={[
             {
-              label: '正常',
+              label: intl.formatMessage({ id: 'Normal' }),
               value: 1,
             },
             {
-              label: '冻结',
+              label: intl.formatMessage({ id: 'Freeze' }),
               value: 2,
             },
           ]}
         />
         {/*  会员备注*/}
-        <ProFormTextArea label={'会员备注'} width="md" name="Remark" />
+        <ProFormTextArea
+          label={intl.formatMessage({ id: 'MemberRemark' })}
+          width="md"
+          name="Remark"
+        />
       </ModalForm>
       <ModalForm
-        title={'状态变更'}
+        title={intl.formatMessage({ id: 'StatusChange' })}
         layout={'horizontal'}
         width={500}
         labelCol={{ span: 4 }}
@@ -276,36 +293,36 @@ const TableList: React.FC = () => {
       >
         <ProFormText readonly={true} name={'ID'} hidden={true} />
         <ProFormRadio.Group
-          label={'状态'}
+          label={intl.formatMessage({ id: 'Status' })}
           width="md"
           name="Status"
           initialValue={1}
           options={[
             {
-              label: '处理中',
+              label: intl.formatMessage({ id: 'Processing' }),
               value: 0,
             },
             {
-              label: '已提货',
+              label: intl.formatMessage({ id: 'Delivered' }),
               value: 1,
             },
             {
-              label: '在途中',
+              label: intl.formatMessage({ id: 'InTransit' }),
               value: 2,
             },
             {
-              label: '确认收货',
+              label: intl.formatMessage({ id: 'ConfirmedReceived' }),
               value: 3,
             },
             {
-              label: '违规订单',
+              label: intl.formatMessage({ id: 'ViolationOrder' }),
               value: 4,
             },
           ]}
         />
       </ModalForm>
       <ModalForm
-        title={'操作回水'}
+        title={intl.formatMessage({ id: 'RebateOperation' })}
         layout={'horizontal'}
         width={800}
         // labelCol={{ span: 4 }}
@@ -326,27 +343,43 @@ const TableList: React.FC = () => {
       >
         {/* 回水方式 */}
         <ProFormRadio.Group
-          label={'回水方式'}
+          label={intl.formatMessage({ id: 'RebateMethod' })}
           width="md"
           name="Type"
           options={[
             {
-              label: '按总下注回水',
+              label: intl.formatMessage({ id: 'RebateByTotalBet' }),
               value: 1,
             },
             {
-              label: '按总输钱回水(下方请填正数)',
+              label: intl.formatMessage({ id: 'RebateByTotalLoss' }),
               value: 2,
             },
           ]}
         />
         {/* 日期 */}
-        <ProFormDatePicker label={'开始日期'} width="md" name={`Date`} />
+        <ProFormDatePicker
+          label={intl.formatMessage({ id: 'RebateStartDate' })}
+          width="md"
+          name={`Date`}
+        />
         <ProFormList name={'Rebate'}>
           <ProForm.Group>
-            <ProFormDigit label={'启始金额'} width="xs" name={`start`} />
-            <ProFormDigit label={'结束金额'} width="xs" name={`End`} />
-            <ProFormDigit label={'回水比例'} width="xs" name={`Rebate`} />
+            <ProFormDigit
+              label={intl.formatMessage({ id: 'RebateStartAmount' })}
+              width="xs"
+              name={`start`}
+            />
+            <ProFormDigit
+              label={intl.formatMessage({ id: 'RebateEndAmount' })}
+              width="xs"
+              name={`End`}
+            />
+            <ProFormDigit
+              label={intl.formatMessage({ id: 'RebateRate' })}
+              width="xs"
+              name={`Rebate`}
+            />
           </ProForm.Group>
         </ProFormList>
       </ModalForm>
