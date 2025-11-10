@@ -39,11 +39,11 @@ export default [
         path: 'user_lists',
         component: './User/user_lists',
       },
-      {
-        name: 'proxy_lists',
-        path: 'proxy_lists',
-        component: './User/proxy_lists',
-      },
+      // {
+      //   name: 'proxy_lists',
+      //   path: 'proxy_lists',
+      //   component: './User/proxy_lists',
+      // },
     ],
   },
   {
