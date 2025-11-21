@@ -380,5 +380,7 @@
   "RebateStartDate": "Start Date",
   "RebateStartAmount": "Start Amount",
   "RebateEndAmount": "End Amount",
-  "RebateRate": "Rebate Rate"
+  "RebateRate": "Rebate Rate",
+  "commission.unit.wan": "w",
+  "commission.unit.k": "k"
 }

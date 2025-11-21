@@ -380,5 +380,7 @@
   "RebateStartDate": "开始日期",
   "RebateStartAmount": "启始金额",
   "RebateEndAmount": "结束金额",
-  "RebateRate": "回水比例"
+  "RebateRate": "回水比例",
+  "commission.unit.wan": "万",
+  "commission.unit.k": "k"
 }

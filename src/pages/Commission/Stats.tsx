@@ -89,17 +89,16 @@ const CommissionStats: React.FC = () => {
       const { commissionRate, levelRange } = activityInfo;
 
       // 格式化范围显示 - 根据数值大小智能选择单位
+      const wanUnit = intl.formatMessage({ id: 'commission.unit.wan' });
+      const kUnit = intl.formatMessage({ id: 'commission.unit.k' });
       const formatAmount = (value: number) => {
         if (value === 0) return '0';
-        if (value >= 100000) {
-          // 大于等于10万，用万单位
-          return `${(value / 10000).toFixed(1)}万`;
-        } else if (value >= 10000) {
+        if (value >= 10000) {
           // 大于等于1万，用万单位，保留1位小数
-          return `${(value / 10000).toFixed(1)}万`;
+          return `${(value / 10000).toFixed(1)}${wanUnit}`;
         } else if (value >= 1000) {
           // 大于等于1千，用k单位，保留1位小数
-          return `${(value / 1000).toFixed(1)}k`;
+          return `${(value / 1000).toFixed(1)}${kUnit}`;
         } else {
           // 小于1000，直接显示元数
           return value.toString();
