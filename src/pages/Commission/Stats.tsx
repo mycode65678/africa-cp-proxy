@@ -82,11 +82,32 @@ const CommissionStats: React.FC = () => {
 
   // 格式化当前档次（使用结构化数据）
   const formatCurrentLevel = (activityInfo: any) => {
-    if (!activityInfo) return '-';
+    let targetInfo = activityInfo;
+
+    // 如果没有当前档次数据，则显示最近的一档（通常是第一档）
+    if (!targetInfo && activityRules && activityRules.length > 0) {
+      // 按充值门槛排序，取最低档
+      const sortedRules = [...activityRules].sort(
+        (a: any, b: any) => a.RechargeStart - b.RechargeStart,
+      );
+      const nearestRule = sortedRules[0];
+      if (nearestRule) {
+        // 构造兼容的结构化数据
+        targetInfo = {
+          commissionRate: nearestRule.RewardRatio,
+          levelRange: {
+            start: nearestRule.RechargeStart,
+            end: nearestRule.RechargeEnd,
+          },
+        };
+      }
+    }
+
+    if (!targetInfo) return '-';
 
     // 使用新的结构化数据格式
-    if (activityInfo.commissionRate && activityInfo.levelRange) {
-      const { commissionRate, levelRange } = activityInfo;
+    if (targetInfo.commissionRate && targetInfo.levelRange) {
+      const { commissionRate, levelRange } = targetInfo;
 
       // 格式化范围显示 - 根据数值大小智能选择单位
       const wanUnit = intl.formatMessage({ id: 'commission.unit.wan' });
@@ -107,7 +128,7 @@ const CommissionStats: React.FC = () => {
 
       const startDisplay = formatAmount(levelRange.start);
       const endDisplay =
-        levelRange.end === 0
+        levelRange.end === 0 || levelRange.end >= 999999999999
           ? intl.formatMessage({ id: 'commission.currentLevel.unlimited' })
           : formatAmount(levelRange.end);
 
@@ -125,8 +146,8 @@ const CommissionStats: React.FC = () => {
 
     // 降级方案：尝试从description中提取佣金比例（支持中英文）
     const commissionMatch =
-      activityInfo.description?.match(/佣金比例:\s*([\d.]+)%/) ||
-      activityInfo.description?.match(/Commission Rate:\s*([\d.]+)%/);
+      targetInfo.description?.match(/佣金比例:\s*([\d.]+)%/) ||
+      targetInfo.description?.match(/Commission Rate:\s*([\d.]+)%/);
     const commissionRate = commissionMatch ? parseFloat(commissionMatch[1]) : null;
 
     if (commissionRate) {
@@ -134,7 +155,7 @@ const CommissionStats: React.FC = () => {
     }
 
     // 最后降级：返回name字段
-    return activityInfo.name || '-';
+    return targetInfo.name || '-';
   };
 
   // 计算升档进度
